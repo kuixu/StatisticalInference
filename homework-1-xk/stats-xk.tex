@@ -132,7 +132,7 @@
 \maketitle
 
 %%---------------------------------------------------------------------------------------------------
-\section{证明下列恒等式(1.2) }
+\section{【1.2】证明下列恒等式 }
 %===================================================================================================
 \begin{enumerate}
   \item[(a)] $A \setminus B = A \setminus (A \cap B) = A \cap B^{C} $\\
@@ -182,7 +182,7 @@ $B$
  故“$B \setminus A = B \cap A^{C}$”得证。\\
 
  % ===================== D ================
-   \item[(c)] $A \cup B = A \cup (B \cap A^{C})$\\
+   \item[(d)] $A \cup B = A \cup (B \cap A^{C})$\\
    证明：课本定理1.1.4直接推导。\\
    $ A \cup (B \cap A^{C})$\\
    $\Leftrightarrow$\\
@@ -193,6 +193,43 @@ $B$
    $A \cup B $
 \end{enumerate}
 
+%%---------------------------------------------------------------------------------------------------
+\section{【1.4】设$A$,$B$为事件，利用$P(A)$,$P(B)$和$P(A \cap B)$，给出下列事件的概率公式：}
+\begin{enumerate}
+  \item[(a)]  事件为$A \cup B$，则概率为：$p=P(A \cup B) =  P(A) + P(B) - P(A \cap B) $(课本定理1.2.9-b)
+  \item[(b)]  事件为$(A \cap B^{C}) \cup (A^{C} \cap B)$，则概率为：$p=P((A \cap B^{C}) \cup (A^{C} \cap B)) $\\
+  = $P(A \cap B^{C}) + P(A^{C} \cap B) $(有限可加性公理)\\
+  = $P(A) - P(A \cap B) + P(B) - P(A \cap B)  $(课本定理1.2.9-a)\\
+  = $P(A) + P(B) - 2*P(A \cap B) $
+  \item[(c)]  事件为$A \cup B$，则概率为：$p=P(A \cup B) =  P(A) + P(B) - P(A \cap B) $(课本定理1.2.9-b)
+  \item[(d)]  事件$(A \cap B)^{C}$， 则概率为：$p=P((A \cap B)^{C}) =1 - P(A \cap B)  $(课本定理1.2.8-c)
+  
+  \end{enumerate}
+  
+%%---------------------------------------------------------------------------------------------------
+\section{【1.11】设S为样本空间， }
+%===================================================================================================
+\begin{enumerate}
+  \item[(a)] 证明$\mathcal{B}=\{\varnothing,S\}$是一个$\sigma$代数;\\
+  证集合$\{\varnothing,S\}$满足$\sigma$代数的三个性质即可。\\
+  证明：对于集合$\{\varnothing,S\}$有$\varnothing \in \mathcal{B}$，即满足性质a。\\
+  又因为$\varnothing \in \mathcal{B}$且$S \in \mathcal{B}$，而$S^{C}=\varnothing$，因此$\mathcal{B}$在补运算下封闭，即满足性质b。\\
+  因为$(S \cup \varnothing) \in \mathcal{B}$，因此$\mathcal{B}$在并运算下封闭，即满足性质c。\\
+  即证得$\mathcal{B}=\{\varnothing,S\}$是一个$\sigma$代数。
+  \item[(b)] 令$\mathcal{B}=\{S的全体子集，包括S本身\}$，证明$\mathcal{B}$是一个$\sigma$代数;\\
+  证明：因为$\varnothing$是任何集合的子集，那么$\varnothing \in S$, 因此$\varnothing \in \mathcal{B}$，即满足性质a。\\
+  设$A$为$S$的一个子集，显然有$A \in \mathcal{B}$，而$A^{C} \in S$，因此$A^{C} \in \mathcal{B}$，即满足性质b。\\
+  设$A_{1}, A_{2},...  $为$S$的所有的子集，有，$A_{1}, A_{2},...  \in S$。那么，显然有$A_{1}, A_{2},...  \in \mathcal{B}$, 即有$\bigcup\limits_{i=1}^{\infty}A_i \in \mathcal{B}$，即满足性质c。\\
+   即证得$\mathcal{B}=\{S的全体子集，包括S本身\}$是一个$\sigma$代数。
+  \item[(c)] 证明两个$\sigma$代数的交仍是$\sigma$代数。\\
+  设有两个$\sigma$代数$\mathcal{B}1$，$\mathcal{B}2$，由$\sigma$代数的性质a可知，$\varnothing \in \mathcal{B}1$且$\varnothing \in \mathcal{B}2$，进而可得$\varnothing \in \mathcal{B}1 \cap \mathcal{B}2$，即满足性质a。\\
+  设$A \in (\mathcal{B}1 \cap \mathcal{B}2 )$, 则有$A \in \mathcal{B}1 $ 和$A \in \mathcal{B}2 $。由$\sigma$代数的性质b可知，$A^{C} \in \mathcal{B} 1$ 和$A^{C} \in \mathcal{B}2 $，因此$A^{C} \in \mathcal{B}1 \cap \mathcal{B}2 $，即满足性质b。\\
+  设$A_{1}, A_{2},...  \in (\mathcal{B}1 \cap \mathcal{B}2 )$, 则有$A_{1}, A_{2},...  \in \mathcal{B}1 $ 和$A_{1}, A_{2},...  \in \mathcal{B}2 $。由$\sigma$代数的性质c可知，$\bigcup\limits_{i=1}^{\infty}A_i \in \mathcal{B}1 $ 和$\bigcup\limits_{i=1}^{\infty}A_i \in \mathcal{B}2 )$，因此$\bigcup\limits_{i=1}^{\infty}A_i \in (\mathcal{B}1 \cap \mathcal{B}2 )$，即满足性质c。\\
+  即证得证明两个$\sigma$代数的交仍是$\sigma$代数。
+ \end{enumerate}
+ 
+ %%---------------------------------------------------------------------------------------------------
+\section{Example }
 %===================================================================================================
 \begin{enumerate}
   \item[a] 假设样本~$\x1n$ 来自指数总体 $e(\lambda)$,
