@@ -1,0 +1,229 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = XeLaTeX
+\documentclass [12pt]{article}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphics}
+\textwidth=6.5in \textheight=9in \topmargin=1pt \oddsidemargin=0pt
+\evensidemargin=0pt
+\renewcommand{\baselinestretch}{1.5}
+\usepackage{CJK}
+\usepackage{fontspec,xltxtra,xunicode}  
+\defaultfontfeatures{Mapping=tex-text}  
+%\setromanfont{SimSun} %设置中文字体  
+\setromanfont{Kai} %设置中文字体  
+\XeTeXlinebreaklocale “zh”  
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt %文章内中文自动换行  
+  
+%-----------------------------------------------
+
+
+
+
+%---------------------------------------------------
+\def\hilite<#1>{\temporal<#1>{\color{blue!35}}{\color{magenta}}{\color{blue!75}}}
+%% 自定义命令, 源自 beamer_guide. item 逐步显示时, 使已经出现的item、正在显示的item、将要出现的item 呈现不同颜色.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\la{\lambda}
+\def\bfta{{\bm{\theta}}}
+\def\Ta{{\Theta}}
+\def\ta{{\theta}}
+\def\hta{{\hat{\theta}}}
+\def\y1n{{Y_1,\cdots, Y_n}}
+\def\x1n{{X_1,\cdots, X_n}}
+\def\f12{{\frac{1}{2}}}
+\def\barx{{\bar{X}}}
+\def\f12{{\frac{1}{2}}}
+\def\Sig{{\Sigma}}
+\def\sig{{\sigma}}
+\def\R{{\mathcal{R}}}
+\def\p{{\mathcal{P}}}
+\def\f{{\mathcal{F}}}
+\def\e{{\epsilon}}
+\def\barx{{\bar{X}}}
+\def\bx{{\bm{x}}}
+\def\bX{{\bm{\mathcal{X}}}}
+
+\def\v#1{\stackrel{#1}{\longrightarrow}}
+%---------------------------------------------
+\newcommand{\cov}{\mbox{cov}}
+\newcommand{\Var}{\mbox{Var}}
+\newcommand{\E}{\mbox{E}}
+%----------------------------------------------------
+\newcommand{\limn}{{\lim\limits_{n\to\infty}}}
+\newcommand{\liminfn}{{\liminf\limits_{n\to\infty}}}
+\newcommand{\limsupn}{{\limsup\limits_{n\to\infty}}}
+
+\newcommand{\sumx}[1]{\sum\limits_{i=1}^n {#1}_i}
+\newcommand{\sumn}[1]{\sum\limits_{#1=1}^n}
+%----------------------------------------------------
+\newcommand{\timx}[1]{\prod\limits_{i=1}^n {#1}_i}
+\newcommand{\timn}[1]{\prod\limits_{#1=1}^n}
+%-------------------------------------------------------
+\def\dps{\displaystyle}
+\def\Om{{\Omega}}
+\def\om{{\omega}}
+\def\pp{{\mathcal{P}}}
+\def\f{{\mathcal{F}}}
+\def\R{{\mathcal{R}}}
+\def\B{{\mathcal{B}}}
+\def\A{{\mathcal{A}}}
+\def\X{{\mathcal{X}}}
+\def\C{{\mathcal{C}}}
+\def\D{{\mathcal{D}}}
+\def\O{{\mathcal{O}}}
+\def\J{{\mathcal{J}}}
+\def\Mu{{\mathcal{U}}}
+%------------------------------------------
+\def\b{{\beta}}
+\def\a{{\alpha}}
+\def\e{{\epsilon}}
+\def\la{\lambda}
+\def\La{\Lambda}
+\def\ta{{\theta}}
+\def\Ta{{\Theta}}
+%-------------------------------------
+
+\def\Sig{\Sigma}
+\def\sig{\sigma}
+
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\indA#1#2{{A^*_{#1 #2}(t)=a_m}}
+\def\sumL {{\sum\limits_{m=1}^L}}
+\def\dbN#1{{d \bar{N}(#1)}}
+
+
+\def\Y#1#2{{Y_{#1#2}(t)}}
+\def\Iam#1#2{{I(A^*_{#1#2}=a_m)}}
+
+
+%------------------------------------------
+\newcommand{\xn}[1]{ #1_1, \cdots, #1_n}
+\newcommand{\capn}[1]{\cap\limits_{#1=1}^n}
+\newcommand{\enorm}[2]{(E({#1}^#2))^{1/#2}}
+
+%\newcommand{\sumx}[1]{\sum\limits_{i=1}^n {#1}_i}
+\newcommand{\seqn}[1]{#1_1,#1_2,\cdots}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{exam}{example}[section]
+\newtheorem{df}{definition}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}{Corrolary}[section]
+\newtheorem{rem}{Remark}[section]
+%------------------------------------------------------------------
+\begin{document}
+ \begin{CJK*}{GBK}{kai}
+ %%----------------------- Theorems ---------------------------------------------------------------------
+\newtheorem{theorem}{定理}
+\newtheorem{definition}{定义}
+%\newtheorem{df}{定义}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{proposition}{性质}
+\newtheorem{example}{例}
+\newtheorem{remark}{注}
+%%----------------------------------------------------------------------------------------------------
+    \title{2016年秋《统计方法与应用》作业-1（概率论）}
+    \author{ 姓名：徐魁\,\,\,\, 学号~~{2016311209}}
+    \date{\today}
+\maketitle
+
+%%---------------------------------------------------------------------------------------------------
+\section{证明下列恒等式(1.2) }
+%===================================================================================================
+\begin{enumerate}
+  \item[(a)] $A \setminus B = A \setminus (A \cap B) = A \cap B^{C} $\\
+ 证明：分两步进行证明，首先证明$A \setminus B = A \setminus (A \cap B) $. \\
+ 令$x \in A \setminus B$, 即$x \in A$ 且 $x \notin B$. \\
+ 由$x \notin B$ 就有$x \notin ( A \cap B)$，\\
+ 进而就有 $x \in A$ 且 $x \notin ( A \cap B)$，\\
+ 因此$A \setminus B = A \setminus (A \cap B) $。
+ 故"$A \setminus B = A \setminus (A \cap B) $"得证。\\
+ \\
+ 同样，由$x \notin B$ 就有$x \in B^{C}$，\\
+进而就有 $x \in A$ 且 $x \in B^{C}$，\\
+ 因此$A \setminus B = A \cap B^{C} $。\\
+ 故“$A \setminus B = A \cap B^{C}  $”得证。\\
+ \\
+ 从而，$A \setminus B = A \setminus (A \cap B) = A \cap B^{C} $得证。
+ 
+ \item[(b)] $B=(B \cap A) \cup (B \cap A^{C})$\\
+ 证明：两种方法均可证明。\\
+ 方法一：课本定理1.1.4直接推导。\\
+由$\textbf{定理 1.1.4}$ 分配律可得，\\
+$(B \cap A) \cup (B \cap A^{C}) $ \\
+$\Leftrightarrow$\\
+ $((B \cap A) \cup B) \cap ( (B \cap A) \cup A^{C})$ (分配律)\\
+ $\Leftrightarrow$\\
+ $B \cap ( (B \cap A) \cup A^{C})$\\
+ $\Leftrightarrow$\\
+ $B \cap ( (B \cup A^{C}) \cap (A \cup A^{C}))$ (结合律)\\
+ $\Leftrightarrow$\\
+ $B \cap (B \cup A^{C})$ \\
+ $\Leftrightarrow$\\
+$B$
+故“$B=(B \cap A) \cup (B \cap A^{C})$”得证。\\
+\\
+ 方法二：用集合包含关系证明。\\
+ 分别证明两个集合的互相之间的包含关系。即要证明：$B \subset (B \cap A) \cup (B \cap A^{C})$ 和 $ (B \cap A) \cup (B \cap A^{C}) \subset B$\\
+  先证明$B \subset (B \cap A) \cup (B \cap A^{C})$ 。\\
+  令$x \in B$, 有$x \in A$或$x \in A^{C}$。若$x \in A$，则$x \in B$且$x \in A$，进而$x \in (B \cap A) $。若$x \in A^{C}$，则$x \in B$且$x \in A^{C}$，进而$x \in (B \cap A^{C}) $。因此有$x \in  (B \cap A) \cup (B \cap A^{C})$, 故$B \subset (B \cap A) \cup (B \cap A^{C})$得证。\\
+  再证明$ (B \cap A) \cup (B \cap A^{C}) \subset B$。\\
+  令$x \in (B \cap A) \cup (B \cap A^{C})$。由$x \in (B \cap A) $，而$(B \cap A) \subset B $，故$x \in B$。由$x \in (B \cap A^{C}) $，而$(B \cap A^{C}) \subset B $，故$x \in B$。因此$ (B \cap A) \cup (B \cap A^{C}) \subset B$得证。\\
+  故“$B=(B \cap A) \cup (B \cap A^{C})$”得证。\\
+ % ===================== C ================
+   \item[(c)] $B \setminus A = B \cap A^{C}$\\
+ 证明：由$x \notin A$ 就有$x \in A^{C}$，\\
+进而就有 $x \in B$ 且 $x \in A^{C}$，\\
+ 因此$B \setminus A = B \cap A^{C}$。\\
+ 故“$B \setminus A = B \cap A^{C}$”得证。\\
+
+ % ===================== D ================
+   \item[(c)] $A \cup B = A \cup (B \cap A^{C})$\\
+   证明：课本定理1.1.4直接推导。\\
+   $ A \cup (B \cap A^{C})$\\
+   $\Leftrightarrow$\\
+   $(A \cup B) \cap (A \cup A^{C}))$ (结合律)\\
+   $\Leftrightarrow$\\
+   $(A \cup B) \cap S$\\
+   $\Leftrightarrow$\\
+   $A \cup B $
+\end{enumerate}
+
+%===================================================================================================
+\begin{enumerate}
+  \item[a] 假设样本~$\x1n$ 来自指数总体 $e(\lambda)$,
+  试验进行到~$r$~个产品失效为止，写出似然函数，并估计未知参数~$\lambda$.
+  \item   假设样本~$\x1n$ 来自指数总体 $e(\lambda)$,
+  试验进行~$t$~ 时刻为止，写出似然函数，并估计未知参数~$\lambda$.
+  \item 解：指数分布的密度函数：
+$$f(x;\lambda)=\lambda \exp\{-\lambda x\} I(x>0).$$
+似然函数:
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  L(\lambda)&=&\timn i \left({\lambda \exp\{-\lambda X_i\}}\right)^{d_i} (\exp\{-\lambda t\})^{1-d_i} \\
+   &=& \lambda^{ \sumn i d_i} \exp\{-\lambda \sumn i [d_i X_i+(1-d_i)t]\}\\
+  l(\la)&=&\log L(\la)=\sumn i d_i \cdot \log \la -\la \sumn i [d_i X_i+(1-d_i)t]
+\end{eqnarray*}
+
+\end{enumerate}
+
+
+  %------------------------------------------------------
+
+$$ \hat{\la}=\frac{\sumn i d_i}{\sumn i [d_i X_i+(1-d_i)t]}.$$
+
+问题：（1）$\hat{\la}$~的渐进分布？或者渐进方差=？如何估计渐进方差？\\
+(2) 写一个子程序估计上面对渐进方差 $\hat{\sig}$.\\
+(3) 在模拟计算中, 用 $S$~向量记录每次模拟的方差估计,
+之后用~$mean(S)$~算500次模拟的方差的平均值，与参数估计的真实样本方差
+($var(lamda)$, 其中 lamda 用来记录500次模拟的参数$\la$~的估计。
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \end{CJK*}
+\end{document}
