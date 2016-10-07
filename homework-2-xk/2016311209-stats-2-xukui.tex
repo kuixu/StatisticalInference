@@ -422,6 +422,18 @@ $$      先求期望，$$\mathbb{E}X=\int_{0}^{\infty}{\frac{4}{\beta^{3}\sqrt{\
        		$$f_{Y}(y|\alpha,\beta)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}y^{-\alpha-1}e^{-\beta/y} $$
 
       		因此，$Y$的概率密度函数为逆Gamma分布。
+		
+		
+	\item[(f)] Find the mean, the variance, the skewness and the kurtosis of a inverse Gamma random variable;
+		解: 
+		计算公式，当$\alpha >n$时，
+		$$EX^n=\frac{d^{(n)}}{dx}M_{X}(t)\vert_{t=0}=\frac{\beta^n}{(\alpha-1)(\alpha-2)...()\alpha-n}$$
+		那么对于$\alpha >1$时，期望$$EX=\frac{d}{dx}M_{X}(t)\vert_{t=0}=\frac{\beta^n}{(\alpha-1)(\alpha-2)...()\alpha-n}\vert_{n=1}=\frac{\beta}{\alpha-1}$$,
+      		再求平方的期望，$$EX^2=\frac{d^{(2)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=\frac{\beta^n}{(\alpha-1)(\alpha-2)...()\alpha-n}\vert_{n=2}=\frac{\beta}{(\alpha-1)(\alpha-2)}$$,
+		因此方差$VarX=EX^2-(EX)^2 =\frac{\beta^2}{(\alpha-1)^2(\alpha-2)}$\\
+		那么对于$\alpha >3$时，skewness:$$EX^3=\frac{d^{(3)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=\frac{4 \sqrt (\alpha -2) }{\alpha-3}$$\\
+		那么对于$\alpha >4$时，Kurtosis : $$EX^4=\frac{d^{(4)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}= \frac{(30 * \alpha - 66) }{((\alpha-3)*(\alpha - 4)) } $$\\
+		
       \end{enumerate}
 
  %%---------------------------------------------------------------------------------------------------
@@ -453,6 +465,8 @@ $$      先求期望，$$\mathbb{E}X=\int_{0}^{\infty}{\frac{4}{\beta^{3}\sqrt{\
      (Hint:Use integration by parts.) Express this formula as a probabilistic relationship between Possion and gamma random variables.
 %===================================================================================================
 	解：对左式进行分部积分， $$\int_{x}^{\infty}\frac{1}{\Gamma(\alpha)}z^{\alpha-1}e^{-z}dz$$
+	$$$$
+	
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
