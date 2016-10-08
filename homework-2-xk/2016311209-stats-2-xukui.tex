@@ -131,7 +131,7 @@
 %%----------------------------------------------------------------------------------------------------
     \title{2016年秋《统计方法与应用》作业-2（随机变量）}
     \author{ 姓名：徐魁\,\,\,\, 学号~~{2016311209}}
-    \date{\today}
+    \date{October 7, 2016}
 \maketitle
 
 %%---------------------------------------------------------------------------------------------------
@@ -461,12 +461,23 @@ $$      先求期望，$$\mathbb{E}X=\int_{0}^{\infty}{\frac{4}{\beta^{3}\sqrt{\
   \end{enumerate}
 
 \section{Show that\\
-     $$\int_{x}^{\infty}\frac{1}{\Gamma(\alpha)}z^{\alpha-1}e^{-z}dz=\sum_{y=0}^{\alpha-1}\frac{x^ye^{-x}}{y!},\alpha=1,2,3,...$$}
-     (Hint:Use integration by parts.) Express this formula as a probabilistic relationship between Possion and gamma random variables.
+     $$\int_{x}^{\infty}\frac{1}{\Gamma(\alpha)}z^{\alpha-1}e^{-z}dz=\sum_{y=0}^{\alpha-1}\frac{x^ye^{-x}}{y!},\alpha=1,2,3,...$$ (Hint:Use integration by parts.) Express this formula as a probabilistic relationship between Possion and gamma random variables.}
+    
 %===================================================================================================
-	解：对左式进行分部积分， $$\int_{x}^{\infty}\frac{1}{\Gamma(\alpha)}z^{\alpha-1}e^{-z}dz$$
-	$$$$
-	
+	解：因为$\alpha=1，2，3,...$, 即$\alpha $是正整数，故有$\Gamma(\alpha)=(a-1)!$\\
+	因此有$$\int_{x}^{\infty}\frac{1}{\Gamma(\alpha)}z^{\alpha-1}e^{-z}dz$$
+	$$=\frac{1}{(\alpha-1)!}\int_{x}^{\infty}z^{\alpha-1}e^{-z}dz$$
+	令$u=z^{\alpha-1}$, $dv=e^{-z}$进行分部积分，
+	有上式$$=\frac{1}{(\alpha-1)!} \left( -z^{\alpha-1}e^{-z} \vert_{x}^{\infty}+\int_{x}^{\infty}(\alpha-1)z^{\alpha-2}e^{-z}dz \right)$$
+	$$=\frac{z^{\alpha-1}e^{-z} }{(\alpha-1)!} +(\alpha-1)\int_{x}^{\infty}z^{\alpha-2}e^{-z}dz$$
+	重复上述分部积分过程，可得：
+	$$=\frac{z^{\alpha-1}e^{-z} }{(\alpha-1)!} +\frac{z^{\alpha-2}e^{-z} }{(\alpha-2)!} +(\alpha-2)\int_{x}^{\infty}z^{\alpha-3}e^{-z}dz$$
+	$$=\frac{z^{\alpha-1}e^{-z} }{(\alpha-1)!} +\frac{z^{\alpha-2}e^{-z} }{(\alpha-2)!} +...+ \frac{z e^{-z}}{1!}+(1)\int_{x}^{\infty}z^{0}e^{-z}dz$$
+	令$y=\alpha-1$,代入到上式可得
+	$$=\sum_{y=0}{\alpha-1}\frac{z^y e^{-z}}{y!}$$
+	因此，可得题中左右两式相等，而等式左边为$P (X ≥ x) $，等式左边为$P (Y ≤ y) $，即可得出结论，如果$X \backsim \Gamma(\alpha,1)$且$Y\backsim Poisson(x)$,那么它们就有一种关系：
+	$$P (X \ge x) = P (Y \le \alpha - 1)$$
+		
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

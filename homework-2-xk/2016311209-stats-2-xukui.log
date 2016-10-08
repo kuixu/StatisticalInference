@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  8 OCT 2016 00:52
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.5.24)  8 OCT 2016 11:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -894,7 +894,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 464--464
 
  []
 
-[14] (./2016311209-stats-2-xukui.aux)
+[14] [15] (./2016311209-stats-2-xukui.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -908,4 +908,4 @@ Here is how much of TeX's memory you used:
  1328 hyphenation exceptions out of 8191
  44i,12n,58p,10413b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 2016311209-stats-2-xukui.pdf (14 pages).
+Output written on 2016311209-stats-2-xukui.pdf (15 pages).
