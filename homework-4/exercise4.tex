@@ -1,0 +1,119 @@
+
+\documentclass[12pt]{report}
+
+% ----------------------------------------------------------------------
+% Packages {Begin}
+% ----------------------------------------------------------------------
+\usepackage[Lenny]{fncychap}
+\usepackage{color}
+\usepackage{bm}
+\usepackage{amsmath}
+\definecolor{MyRed}{rgb}{0.90,0.00,0.00}
+\setcounter{chapter}{3}
+\renewcommand{\chaptername}{Exercise}
+    
+\begin{document}
+\chapter{Random Sampling}
+
+\textcolor{MyRed}{
+\textbf{
+    \Large
+    Deadline: October 19, 2016.
+}
+}\\\\
+\textbf{Note:\\}For calculation problem, please give details of the derivation. Answers will receive only half of the points.
+
+
+
+\begin{enumerate}
+
+%1
+    \item Reading.
+    \begin{enumerate}
+        \item Lecture notes 4.
+        \item Chapter 5 of the book "Statistical Inference".
+    \end{enumerate}
+     
+%2        
+    \item Let $X_1, \ldots, X_n$ be a random sample of size $n$ from a $N(0, \sigma^2)$ population. Prove that
+        \[
+            \frac{(n-1)S^2}{\sigma^2} = \sum_{i=1}^n\Big(\frac{X_i-\bar{X}}{\sigma}\Big)^2
+        \]
+        has a $\chi^2$ distribution with $n-1$ degrees of freedom.
+
+%3
+    \item Let $X_1, \ldots, X_n$ be a random sample of size $n$ from a $N(0, \sigma^2)$ population. Prove that $\bar{X}$ and $S^2$ are independent random variables.
+    
+%4           
+    \item Let $X_1, \ldots, X_n$ be a random sample of size $n$ from a $N(\mu, 1)$ population. Define random variables $Y_1,\ldots,Y_n$ as
+        \[
+            Y_i= \left \{
+            \begin{array}{ll}
+              1 & \mbox{if } X_i > \mu \\
+              0 & \mbox{if } X_i \leq    \mu
+            \end{array}
+            \right.
+            .
+        \]
+        Derive the distribution of $\sum_{i=1}^nY_i$
+%5        
+      \item Two samples $X_1,\ldots,X_m$ and $Y_1,\ldots,Y_n$ are obtained from two independent normal population $N(\mu_X, \sigma_X^2)$ and $N(\mu_Y, \sigma_Y^2)$, respectively, and the condition $   \sigma_X=\sigma_Y=\sigma$ holds.
+        \begin{enumerate}
+        \item Show that
+            \[
+                \frac{
+                    (\bar{X} - \bar{Y}) - (\mu_X - \mu_Y)
+                }{
+                    \sigma \sqrt{\frac{1}{m} + \frac{1}{n}}
+                }
+            \]
+            has a standard normal distribution.
+
+
+        \item Show that
+            \[
+                \frac{
+                    (m+n-2) S_p^2
+                }
+                {
+                    \sigma^2
+                }
+            \]
+            has a $\chi^2$ distribution with $m+n-2$ degrees of freedom, where
+            \[
+                S_p^2 = \frac{
+                    (m-1) S_X^2 + (n-1) S_Y^2
+                }
+                {
+                    m+n-2
+                }
+            \]
+            is the pooled variance estimate.
+
+
+        \item With the above two conclusion, show that
+            \[
+                \frac{
+                    (\bar{X} - \bar{Y}) - (\mu_X - \mu_Y)
+                }{
+                    S_p \sqrt{\frac{1}{m} + \frac{1}{n}}
+                }
+            \]
+            has a student's \emph{t} distribution with $m+n-2$ degrees of freedom.
+
+        \end{enumerate}
+%6 
+ \item Let $X$ be a random variable with student $t$ distribution with $p$ degrees of freedom.
+    \begin{enumerate}
+    	\item Derive the mean and variance of $X$.
+    	\item Prove that when $p$ tends to infinite, $X$ converges in distribution to standard normal. That is,
+        	\[
+        	    \lim_{p \rightarrow \infty}f(x|p) = \frac{1}{\sqrt{2\pi}}e^{-x^2/2}, \mbox{  for any} -\infty < x < \infty
+        	\]
+    	\item Find the distribution of $X^2$
+    \end{enumerate}
+
+
+
+\end{enumerate}
+\end{document}
