@@ -129,7 +129,7 @@
 \newtheorem{example}{例}
 \newtheorem{remark}{注}
 %%----------------------------------------------------------------------------------------------------
-    \title{2016年秋《统计方法与应用》作业-3（随机变量）}
+    \title{2016年秋《统计方法与应用》作业-4（Random Sampling）}
     \author{ 姓名：徐魁\,\,\,\, 学号~~{2016311209}}
     \date{\today}
 \maketitle
@@ -138,346 +138,42 @@
 \section{Reading. }
 %===================================================================================================
 \begin{enumerate}
-  \item[(a)] Lecture notes 3.
- \item[(b)] Chpaters 4 of the book ”Statistical Inference”.\\
+  \item[(a)] Lecture notes 4.
+ \item[(b)] Chpaters 5 of the book ”Statistical Inference”.\\
  
 \end{enumerate}
 
 %%---------------------------------------------------------------------------------------------------
-\section{The joint distribution of X and Y is}
-根据课本定理1.5.3，验证下列函数是否满足累积分布函数的三个性质即可。
-\begin{enumerate}
-  \item[(a)]  对于
-$$F_{X}(x)=
-\begin{cases}
-0& \text{if x < 0}\\
-1- e^{-x} & \text{if x $\ge$ 0}
-\end{cases}$$
-有：
-\begin{itemize}
-\item[-] $\lim\limits_{x \to -\infty }F(x) = 0$，因为$x<0$时，$F_{X}(x)=0$;又因为$\lim\limits_{x \to +\infty }e^{-x} = 0$, 所以$\lim\limits_{x \to +\infty }F(x) = 1$；
-\item[-] 因为$e^x$是单调增函数，因此$1 - e^{-x}$还是单调增函数；或者可以证明导数大于0；直接求导有，$\frac{d}{dx}F_{X}(x)=(1-e^{-x})^{'}=-(e^{-x})^{'}(-x)^{'}=e^{-x} >0$
-\item[-] 由于$F_{X}(x)$是连续函数，因此$F_{X}(x)$一定是右连续函数。
-\end{itemize}
-即得证。\\
+\section{Let $X_1, \ldots, X_n$ be a random sample of size $n$ from a $N(0, \sigma^2)$ population. Prove that
+        \[
+            \frac{(n-1)S^2}{\sigma^2} = \sum_{i=1}^n\Big(\frac{X_i-\bar{X}}{\sigma}\Big)^2
+        \]
+        has a $\chi^2$ distribution with $n-1$ degrees of freedom.}%===================================================================================================
+	证明：
+		现在要证明$\frac{(n-1)S^2}{\sigma^2} = \sum_{i=1}^n\Big(\frac{X_i-\bar{X}}{\sigma}\Big)^2$有一个 $\chi^2$ 分布和 $n-1$ 的自由度，我们采用数学归纳法证明，有递推公式可知，
+		\[
+            		(n-1)S^2 = (n-2)S_{n-1}^2+\Big(\frac{n-1}{n}\Big)(X_{n}- \bar{X}_{n-1})^2
+        		\]
+		当n=2时，有，
+		\[
+			S^2 = \frac{1}{2}(X_2-X_1)^2
+		\]
+		由于$(X_2-X_1)/\sqrt{2}$服从于n(0,1)分布，于是根据引理5.3.2有$S_2^2 \thicksim \chi_1^2$。\\
+		现假设$(k-1)S_{k}^2 \thicksim \chi_{k-1}^2$,\\
+		则，当对于$n=k+1$，有，
+		\[
+            		kS^2 = (k-2)S_{k}^2+\Big(\frac{k}{k+1}\Big)(X_{k+1}- \bar{X}_{k})^2
+        		\]
+		根据，假设$(k-1)S_{k}^2 \thicksim \chi_{k-1}^2$，且根据引理5.3.2，$kS_{k}^2 \thicksim \chi_{k}^2$，从而定理得证。\\
+		另外，可由定理：$X_1,...,X_n$是一列独立的随机向量，$g_i(x_i)$是$x_i$的一元函数，则随机变量$U_i=g_i(X_i)$直接证明，$(X_{k+1}- \bar{X}_{k})^2  \thicksim S_{k}^2 $的独立性。
+		
+		
 
-求$F_{X}^{-1}(y)$：\\
-有$y=1-e^{-x} $
- $\Leftrightarrow$\\
- $e^{-x}=1-y $
- $\Leftrightarrow$\\
- $\ln{e^{-x}}=\ln{1-y} $
-$\Leftrightarrow$\\
- $x=- \ln{1-y} $\\
- 即，$F_{X}^{-1}(y)=- \ln{(1-y)}$\\
- 
- 
-  \item[(b)]  对于
-$$F_{X}(x)=
-\begin{cases}
-e^x / 2 & \text{if x < 0}\\
-1 / 2 & \text{if 0 $\le$ x < 1}\\
-1- (e^{1-x} / 2) & \text{if 1 $\le$ x}
-\end{cases}$$
-有：
-\begin{itemize}
-\item[-] $\lim\limits_{x \to -\infty }F(x) = 0$，因为$x<0$时，$\lim\limits_{x \to -\infty }e^x = 0$;又因为$\lim\limits_{x \to +\infty }e^{1-x} = 0$, 所以$\lim\limits_{x \to +\infty }F(x) = 1$；
-\item[-] 因为$e^x$是单调增函数，因此$1 - e^{-x}$还是单调增函数, 所以$1- (e^{1-x} / 2)$还是单调增函数，而$F_{X}(x)$在区间[0,1)是常数，常数是非单调递减,  因此$F_{X}(x)$在整个定义域上是单调增函数;
-\item[-] 由于$F_{X}(x)$是连续函数，因为$\lim\limits_{x \to 0 }F(x) = 1/2$且$\lim\limits_{x \to 1 }F(x) = 1/2$，所以$F_{X}(x)$一定是右连续函数。
-\end{itemize}
-即得证。
 
-求$F_{X}^{-1}(y)$：\\
-有当$x \in (- \infty , 0)$时, 有$y \in [0,1/2]$，$y=e^x / 2 $（疑问2）
- $\Leftrightarrow$\\
- $e^x=2y $
- $\Leftrightarrow$\\
- $\ln{e^x}=\ln{(2y)} $
-$\Leftrightarrow$\\
- $x= \ln{(2y)} $\\
- 即，当$y \in [0,1/2]$时，$F_{X}^{-1}(y)= \ln{2y}$\\
- 当$x \in [1 , + \infty)$时, 有$y \in [1/2,1)$，$y= 1- (e^{1-x} / 2) $
-$\Leftrightarrow$\\
- $e^{1-x} =2(1-y) $
- $\Leftrightarrow$\\
- $\ln{e^{1-x}}=\ln{(2(1-y))} $
-$\Leftrightarrow$\\
- $1-x= \ln{(2(1-y))} $\\
- $\Leftrightarrow$\\
- $x=1 - \ln{(2(1-y))} $\\
- 即，当$y \in [1/2,1)$时，$F_{X}^{-1}(y)=1 - \ln{(2(1-y))} $\\
-故，$$F_{X}^{-1}(y)=
-\begin{cases}
-ln{(2y)} & \text{if y $\in$ [0,1/2]}\\
-1 - ln{(2(1-y))} & \text{if y $\in$ [1/2,1)}
-\end{cases}$$
-%%-----------------------------c-----
-  \item[(c)]  对于
-$$F_{X}(x)=
-\begin{cases}
-e^x / 4 & \text{if x < 0}\\
-1- (e^{-x} / 4) & \text{if x $\ge$ 0}
-\end{cases}$$
-有：
-\begin{itemize}
-\item[-] $\lim\limits_{x \to -\infty }F(x) = 0$，因为$x<0$时，$\lim\limits_{x \to -\infty }e^x = 0$;又因为$\lim\limits_{x \to +\infty }e^{-x} = 0$, 所以$\lim\limits_{x \to +\infty }F(x) = 1$；
-\item[-] 因为$e^x$是单调增函数，因此$1 - e^{-x}$还是单调增函数, 所以$1- (e^{-x} / 4)$还是单调增函数，而$F_{X}(x)$在区间[0,1)是常数，常数是非单调递减,  因此$F_{X}(x)$在整个定义域上是单调增函数;（略微有点疑问）
-\item[-] 因为$\lim\limits_{x \to 0^{+} }F(x) = 3/4$且$F(0) = 3/4$，所以$F_{X}(x)$是右连续函数。
-\end{itemize}
-即得证。
-
-求$F_{X}^{-1}(y)$：\\
-有当$x \in (- \infty , 0)$时, 有$y \in [0,1/4)$，$y=e^x / 4$
- $\Leftrightarrow$\\
- $e^x=4y $
- $\Leftrightarrow$\\
- $\ln{e^x}=\ln{(4y)} $
-$\Leftrightarrow$\\
- $x= \ln{(4y)} $\\
- 即，当$y \in [0,1/4)$时，$F_{X}^{-1}(y)= \ln{(4y)}$\\
- 当$x \in [0 , + \infty)$时, 有$y \in [3/4,1)$，$y= 1- (e^{-x} / 4) $
-  $\Leftrightarrow$\\
- $e^{-x}=4(1-y) $
- $\Leftrightarrow$\\
- $\ln{e^{-x}}=\ln{4(1-y)} $
-$\Leftrightarrow$\\
- $x=- \ln{(4(1-y))} $\\ 即，当$y \in [1/4,1)$时，$F_{X}^{-1}(y)=1 - \ln{(4(1-y))} $\\
-故，$$F_{X}^{-1}(y)=
-\begin{cases}
-ln{(4y)} & \text{if y $\in$ [0,1/4)}\\
-1 - ln{(4(1-y))} & \text{if y $\in$ [3/4,1)}
-\end{cases}$$
-
-\end{enumerate}
   
 %%---------------------------------------------------------------------------------------------------
-\section{Let $X$ have the pdf，  $$f(x)=\frac{4}{\beta^{3}\sqrt{\pi}}x^{2}e^{-x^2/\beta^{2}},x \in [0,\infty), \beta >0$$ }
+\section{Let $X_1, \ldots, X_n$ be a random sample of size $n$ from a $N(0, \sigma^2)$ population. Prove that $\bar{X}$ and $S^2$ are independent random variables. }
 %===================================================================================================
-   \begin{enumerate}
-      \item[(a)] Verify $f(x)$ is a valid pdf.\\
-      证明：两个性质不难证明性质a, 即$f_{X}(x) \ge 0$。\\
-      不难推导，$$f(x)=\int_{0}^{\infty}f(x) dx = \int_{0}^{\infty}\frac{4}{\beta^{3}\sqrt{\pi}}x^{2}e^{-x^2/\beta^{2}} dx \approx 1$$ 即可证$f(x)$ 是概率密度函数。
-      \item[(b)] Find  $\mathbb{E}(X)$ and $Var X$.\\
-      解: 
-      首先，因为，
-$$ \int_{0}^\infty xe^{-x} dx=\Gamma{(2)} =1；
-$$      先求期望，$$\mathbb{E}X=\int_{0}^{\infty}{\frac{4}{\beta^{3}\sqrt{\pi}}x^{3}e^{-x^2/\beta^{2}}}dx $$
-      令$t=x/\beta$, 有$$\mathbb{E}X=\frac{4\beta}{\sqrt{\pi}}  \int_{0}^{\infty}{t^{3}e^{-t^{2}}}dt $$\\
-      再令$m=t^2$,有$$\mathbb{E}X=\frac{4\beta}{\sqrt{\pi}} \frac{1}{2} \int_{0}^{\infty}{ m e^{-m}}dm $$
-      进而，$$\mathbb{E}X=\frac{2\beta}{\sqrt{\pi}} \int_{0}^{\infty}{ m e^{-m}}dm = \frac{2\beta}{\sqrt{\pi}}$$
-      	再求平方的期望，因为$$\int_{-\infty}^\infty x^2e^{-x^2} dx=\int_{0}^\infty xe^{-x^2} 2xdx=\int_{0}^\infty u^{\frac{1}{2}} e^{-u}du=\Gamma\left(\frac{3}{2}\right) =\frac{\sqrt{\pi}}{2}$$, 且这个函数是关于0对称，因此$$ \int_{-\infty}^\infty x^2e^{-x^2} dx=\frac{\sqrt{\pi}}{4}$$
-	
-	
-	$$\mathbb{E}X=\int_{0}^{\infty}{\frac{4}{\beta^{3}\sqrt{\pi}}x^{4}e^{-x^2/\beta^{2}}}dx $$
-      令$t=x/\beta$, 有$$\mathbb{E}X=\frac{4\beta^2}{\sqrt{\pi}}  \int_{0}^{\infty}{t^{4}e^{-t^{2}}}dt $$\\
-     $$\mathbb{E}X=\frac{4\beta^2}{\sqrt{\pi}} (-\frac{1}{2}) \int_{0}^{\infty}{ t^3 e^{-t^2}}d(-t^2) $$
-      进而，$$\mathbb{E}X=-\frac{2\beta^2}{\sqrt{\pi}} \int_{0}^{\infty}{  t^3 d(e^{-t^2})} = -\frac{2\beta^2}{\sqrt{\pi}} \left(  t^3 e^{-t^2} \vert_{0}^{+\infty }  - \int_{0}^{\infty}{ e^{-t^2}}d(t^3) \right) $$
-      $$= -\frac{2\beta^2}{\sqrt{\pi}} \left(  t^3 e^{-t^2} \vert_{0}^{+\infty }  - \int_{0}^{\infty}{3 t^2 e^{-t^2}}dt \right) $$
-      $$= -\frac{2\beta^2}{\sqrt{\pi}} \left(-3 \frac{\sqrt{\pi}}{4} \right)  = \frac{3\beta^2}{2} $$
-	因此方差$VarX=\mathbb{E}(x^2)-(\mathbb{E}(x))^2 =\frac{3\beta^2}{2} - (\frac{2\beta}{\sqrt{\pi}})^2$
-	
-\end{enumerate}	
-%%---------------------------------------------------------------------------------------------------
-\section{证明}
-%===================================================================================================
- \begin{enumerate}
-  \item[(a)] 设X是连续且非负的随机变量，证明$EX=\int_{0}^{\infty}{[1-F_{X}(x)]dx}$\\
-  证明：由于$F_{X}(x)=P(X \le x)$, 且，$1-F_{X}(x)=P(X > x)$\\
-  %每一步的详细的依据可以放在上面
-  
-  那么，有$$\int_{0}^{\infty}{(1-F_{X}(x))dx}=\int_{0}^{\infty}{P(X > x)dx}$$\\
-  而根据定义$$EX= \int_{0}^{\infty}{xf_{X}(x)dx}$$
-  $$ = \int_{0}^{\infty}{\int_{x}^{\infty}{f_{X}(x)dydx}}$$
-  $$ = \int_{0}^{\infty}{\int_{0}^{y}{dxf_{X}(y)dy}}$$ 
-  $$ = \int_{0}^{\infty}{yf_{X}(y)dy}$$ 
-  $$ = \int_{0}^{\infty}{xf_{X}(x)dx}$$ 
-  即$$ = EX$$ 
-  故得证。
-  
-  \item[(b)] 设X是取值为非负整数的离散随机变量，证明：$EX=\sum_{k=0}^{\infty}{(1-F_{X}(k))}$\\
-  %离散型的如何求？
-  证明:
-\end{enumerate}
-
-
- %%---------------------------------------------------------------------------------------------------
-\section{ 设$f(x)$为一概率密度函数，如果存在数$a$使得：对于任意$\varepsilon > 0$都有$f(a+\varepsilon)=f(a-\varepsilon)$, 则称$f(x)$关于a对称。}
-%===================================================================================================
-  \begin{enumerate}
-  \item[(a)] 三个对称的概率密度函数：
- 	 \begin{itemize}
-		\item[-] 正态分布:$$f(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2}$$
-		\item[-] 柯西分布:$$f(x)=\frac{1}{\pi(1+x^2)}$$
-		\item[-] 罗吉斯蒂克概率函数: $$f(x)=\frac{1}{1+e^{-x}}$$
-	\end{itemize}
-
-  	
-  \item[(b)] 因为概率分布的中位数满足$P(X \le m) \ge \frac{1}{2}$ 且$P(X \ge m) \ge \frac{1}{2}$ ，$$\int_{-\infty}^af(x)dx=\int_a^{\infty}f(2a-x)dx=1/2$$.\\
-  	令$\varepsilon=x-a$那么有，$$\int_{a}^{\infty}f(x)dx=\int_{0}^{\infty}f(a+\varepsilon)d\varepsilon=\int_{0}^{\infty}f(a-\varepsilon)d\varepsilon$$\\
-	令$x=a-\varepsilon$那么有上式等于$$=\int_{-\infty}^{a}f(x)dx$$\\
-	即$$\int_{a}^{\infty}f(x)dx=\int_{-\infty}^{a}f(x)dx$$
-	而对于一个概率密度函数有$$\int_{a}^{\infty}f(x)dx + \int_{-\infty}^{a}f(x)dx=1$$，
-	因此有$$\int_{a}^{\infty}f(x)dx=\int_{-\infty}^{a}f(x)dx=\frac{1}{2}$$,\\
-	那么根据中位数的性质，可得该函数的中位数就是$a$。
-  \item[(c)] 根据期望的定义可得，$$EX=\int_{-\infty}^{\infty}xf(x)dx$$\\
-  	且有，$$EX- a=E(X-a)$$\\
-	因此$$EX- a=E(X-a)=\int_{-\infty}^{\infty}(x-a)f(x)dx$$\\
-	此时令$\varepsilon=x-a$,有上式等于$$=\int_{0}^{\infty}-\varepsilon f(a-\varepsilon)d\varepsilon+\int_{0}^{\infty}\varepsilon f(a+\varepsilon)d\varepsilon$$\\
-  	又有对称函数的性质，$f(a+\varepsilon)=f(a-\varepsilon)$可得，上式为0\\
-	即$$EX- a=0$$, 因此有$$EX= a$$
-  \item[(d)] 对于$f(x)=e^{-x}$有，$f(a+\varepsilon)=e^{-a-\varepsilon}$，$f(a-\varepsilon)=e^{-a+\varepsilon}$,\\
-  	可得$\frac{f(a+\varepsilon)}{f(a-\varepsilon)}=\frac{e^-\varepsilon}{e^\varepsilon}=\frac{1}{e^{2\varepsilon}}$\\
-	因为$\varepsilon \ge 0$, 因此$\frac{1}{e^{2\varepsilon}} \ne 1 $， 因此$f(x)=e^{-x}$不是对称的概率密度函数。
- \item[(e)] 对于$f(x)=e^{-x}$，可求得中值为$log(2)$, 而期望$EX=\int_{-\infty}^\infty{ xf(x)dx}=1$\\
- 	即中位数小于期望。
-\end{enumerate}
-
-
-
-
-
-
-%%---------------------------------------------------------------------------------------------------
-\section{求下列分布的矩母函数}
-%===================================================================================================
-\begin{enumerate}
-  \item[(a)]  $f(x)=\frac{1}{c}, 0<x<c$; \\
-	  解：根据矩母函数的定义，有:\\
-	  $$Ee^{tX}=\int_{0}^{c}e^{tx}f(x)dx$$\\
-	  $$=\int_{0}^{c}e^{tx}\frac{1}{c}dx=\frac{1}{ct}e^{tx} \vert_{0}^{c} =\frac{1}{ct}(e^{tc}-1)$$
-  \item[(b)]  $f(x)=\frac{2x}{c^2},  0<x<c$;\\
-  	 解：根据矩母函数的定义，有:\\
-	  $$Ee^{tX}=\int_{0}^{c}e^{tx}f(x)dx$$\\
-	  $$=\int_{0}^{c}e^{tx}\frac{2x}{c^2}dx=\frac{2x}{c^2}e^{tx} \vert_{0}^{c} =\frac{2}{c^2 t^2}(cte^{tc}-e^{tc}+1)$$
-  \item[(c)]  $f(x)=\frac{1}{2\beta}e^{-|x-\alpha|/\beta},  -\infty<x<\infty, -\infty<\alpha<\infty,\beta>0$;\\
-  	 解：根据矩母函数的定义，有:\\
-	  $$Ee^{tX}=\int_{-\infty}^{\infty}e^{tx}f(x)dx$$\\
-	  $$=\int_{-\infty}^{\infty}e^{tx}\frac{1}{2\beta}e^{-|x-\alpha|/\beta}dx$$\\
-	  $$=\int_{-\infty}^{\alpha}e^{tX}\frac{1}{2\beta}e^{(x-\alpha)/\beta}dx+\int_{\alpha}^{\alpha}e^{tX}\frac{1}{2\beta}e^{-(x-\alpha)/\beta}dx$$
-	  $$=\frac{e^{-\alpha/\beta}}{2\beta} \frac{1}{1/\beta+t} e^{-x(1/\beta+t)}\vert_{-\infty}^{\alpha}- \frac{e^{\alpha/\beta}}{2\beta} \frac{1}{1/\beta-t} e^{-x(1/\beta-t)}\vert_{\alpha}^{\infty}$$
-	  $$=\frac{4}{4-\beta^2 t^2}e^{\alpha t}$$
- 
-  
- \end{enumerate}  
-
-%%---------------------------------------------------------------------------------------------------
-\section{求出下列$Y$的概率密度函数}
-%===================================================================================================
-\begin{enumerate}
-  \item[(a)]  $Y=X^2$ and $f_{X}(x)=1, 0<x<1$\\
-  	解：令$Y=g(x)$,则$g^{-1}(y)=y^{1/2}$且$\frac{d}{dy}g^{-1}(y)=\frac{1}{2\sqrt{y}}$\\
-  	对于，$0<x<1$,有$Y=g(x)$是单调增函数，因此由课本定理2.1.5可得，概率密度函数$f_{Y}(y)=f_{X}(g^{-1}(y))\frac{d}{dy}g^{-1}(y)$, $0<y<1$\\
-	即$$f_{Y}(y)=1 * \frac{1}{2\sqrt{y}}= \frac{1}{2\sqrt{y}}$$,且 $0<y<1$。
-	
-  \item[(b)]  $Y=-log(X)$ and $X$ has pdf, $f_{X}(x)=\frac{(m+n+1)!}{n!m!}x^n(1-x)^m, 0<x<1,m,n$ 为正整数。\\
-  	解：令$Y=g(x)$,则$g^{-1}(y)=e^{-y}$且$\frac{d}{dy}g^{-1}(y)=-e^{-y}$\\
-  	对于，$0<x<1$,有$Y=g(x)$是单调减函数，因此由课本定理2.1.5可得，概率密度函数$f_{Y}(y)=-f_{X}(g^{-1}(y))\frac{d}{dy}g^{-1}(y)$, $0<y<1$\\
-	即$$f_{Y}(y)=- \frac{(m+n+1)!}{n!m!} (e^{-y})^n(1-e^{-y})^m  -e^{-y}= \frac{(m+n+1)!}{n!m!}e^{-y(n+1)}(1-e^{-y})^m$$, $0<y<\infty$。
-
-  \item[(c)]  $Y=e^X$ and $X$ has pdf, $f_{X}(x)=\frac{1}{\sigma^2}xe^{-(x/\sigma)^2/2}$, $0<x<\infty$, $ \sigma^2$为正数。\\
-  	解：令$Y=g(x)$,则$g^{-1}(y)=\log y$且$\frac{d}{dy}g^{-1}(y)=1/y$\\
-  	对于，$0<x<1$,有$Y=g(x)$是单调增函数，因此由课本定理2.1.5可得，概率密度函数$f_{Y}(y)=f_{X}(g^{-1}(y))\frac{d}{dy}g^{-1}(y)$, $0<y<1$\\
-	即$$f_{Y}(y)=\frac{1}{\sigma^2}(\log{y})e^{-(\log{y}/\sigma)^2/2}  * (1/y)= \frac{\log{y}}{y\sigma^2}e^{-(\log{y}/\sigma)^2/2}  $$, $0<y<\infty$。
-
-\end{enumerate}  
-
-%%---------------------------------------------------------------------------------------------------
-
-\section{A random variable $X$ is said to have a Gamma distribution if its pdf is: \\
-     $$f(x|shape=\alpha,scale=\theta)=\frac{1}{\Gamma(\alpha)\theta^\alpha}x^{\alpha-1}e^{-x/\theta},x \in [0,\infty), \alpha >0,\theta>0$$}
-%===================================================================================================
-\begin{enumerate}      
-	\item[(a)] Verify $f(x|\alpha,\theta)$ is a valid pdf.\\
-		证明：两个性质不难证明性质a, 即$f_{X}(x) \ge 0$。\\
-      		不难推导，$$f_{X}(x|\alpha,\theta)=\int_{-\infty}^{\infty}f_{X}(x|\alpha,\theta) dx $$
-		$$= \int_{-\infty}^{\infty}\frac{1}{\Gamma(\alpha)\theta^\alpha}x^{\alpha-1}e^{-x/\theta} dx \approx 1$$ 
-		即可证$f(x|\alpha,\theta)$ 是概率密度函数。
-		
-      	\item[(b)] Find the mode of a Gamma random variable (for $\alpha$ > 1); \\
-		解：当 $\alpha$ > 1时，$f(x)$先递增，后递减，mode为$(\alpha -1)\theta$
-	\item[(c)] Find the moment generating function M(t) of a Gamma random variable;\\
-		解：根据$\Gamma(\alpha)$函数的性质，其对应的矩母函数为：
-		$$M_{X}(t)=\frac{1}{\Gamma(\alpha)\theta^\alpha} \int_{0}^{+\infty} e^{tx} x^{\alpha-1}e^{-x/\theta}dx$$
-		$$=\frac{1}{\Gamma(\alpha)\theta^\alpha} \int_{0}^{+\infty} x^{\alpha-1}e^{-(1/\theta-t)x}dx$$
-		根据伽玛函数的性质,对于任意大于0的常数$\alpha,\beta$:
-		$$f(x)=\frac{1}{\Gamma(a)b^a}x^{a-1}e^{-x/b}$$,都是某随机变量的概率密度函数，于是
-		$$\int_{0}^{+\infty}\frac{1}{\Gamma(a)b^a}x^{a-1}e^{-x/b}dx=1$$
-		也就是$$\int_{0}^{+\infty}x^{a-1}e^{-x/b}dx=\Gamma(a)b^a$$
-		即得：当$t<1/\theta$有
-		$$M_{X}(t)=\frac{1}{\Gamma(\alpha)\theta^\alpha} \Gamma(\alpha)\left( \frac{\theta}{1-\theta t}\right)^\alpha=\left( \frac{1}{1-\theta t}\right)^\alpha$$
-		而当$t\ge 1/\theta$时，没有矩母函数，因为$M_{X}(x)积分为无穷$。
-	\item[(d)] Find \textbf{mean} , \textbf{variance} of $X$, the  \textbf{skewness} and the  \textbf{kurtosis} of a Gamma random variable;
-      		解: 先求期望，$$EX=\frac{d}{dx}M_{X}(t)\vert_{t=0}=\frac{\alpha\theta}{(1-\theta t)^{\alpha+1}}\vert_{t=0}=\alpha\theta$$
-      		再求平方的期望，$$EX^2=\frac{d^{(2)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=\frac{d}{dx}\frac{\alpha\theta}{(1-\theta t)^{\alpha+1}}\vert_{t=0}=\frac{(\alpha+1)\alpha\theta^2}{(1-\theta t)^{\alpha+2}}\vert_{t=0}=(\alpha+1)\alpha\theta^2$$,
-		因此方差$VarX=EX^2-(EX)^2 =\alpha\theta^2$\\
-		The skewness of a random variable X is its third central moment ,因此$$EX^3=\frac{d^{(3)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=\frac{2}{\sqrt{\alpha}}$$\\
-		The Kurtosis of a random variable X is its fourth central moment,因此$$EX^4=\frac{d^{(4)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=3+\frac{6}{\alpha}$$\\
-		
-      	\item[(e)] Let $Y=1/X$. What is the pdf of $Y$?($Y$ is said to have an inverse gamma distribution)
-      		解：令$Y=1/X$, 则有，$\frac{dx}{dy}=\frac{1}{y^2}$, 且$Y$的概率密度函数为：\\
-      		$$f_{Y}(y|\alpha,\theta)=f_{X}(y|\alpha,\theta) \frac{dx}{dy}$$
-      		$$f_{Y}(y|\alpha,\theta)=\frac{1}{\Gamma(\alpha)\theta^\alpha}(\frac{1}{y})^{\alpha-1}e^{-1/(\theta y)} \mid  \frac{1}{y^2}\mid$$
-      		$$f_{Y}(y|\alpha,\theta)=\frac{1}{\Gamma(\alpha)\theta^\alpha}y^{-\alpha-1}e^{-1/(\theta y)} $$
-      		用$\beta$替换$\theta^{-1}$得：
-       		$$f_{Y}(y|\alpha,\beta)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}y^{-\alpha-1}e^{-\beta/y} $$
-
-      		因此，$Y$的概率密度函数为逆Gamma分布。
-		
-		
-	\item[(f)] Find the mean, the variance, the skewness and the kurtosis of a inverse Gamma random variable;
-		解: 
-		计算公式，当$\alpha >n$时，
-		$$EX^n=\frac{d^{(n)}}{dx}M_{X}(t)\vert_{t=0}=\frac{\beta^n}{(\alpha-1)(\alpha-2)...()\alpha-n}$$
-		那么对于$\alpha >1$时，期望$$EX=\frac{d}{dx}M_{X}(t)\vert_{t=0}=\frac{\beta^n}{(\alpha-1)(\alpha-2)...()\alpha-n}\vert_{n=1}=\frac{\beta}{\alpha-1}$$,
-      		再求平方的期望，$$EX^2=\frac{d^{(2)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=\frac{\beta^n}{(\alpha-1)(\alpha-2)...()\alpha-n}\vert_{n=2}=\frac{\beta}{(\alpha-1)(\alpha-2)}$$,
-		因此方差$VarX=EX^2-(EX)^2 =\frac{\beta^2}{(\alpha-1)^2(\alpha-2)}$\\
-		那么对于$\alpha >3$时，skewness:$$EX^3=\frac{d^{(3)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=\frac{4 \sqrt (\alpha -2) }{\alpha-3}$$\\
-		那么对于$\alpha >4$时，Kurtosis : $$EX^4=\frac{d^{(4)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}= \frac{(30 * \alpha - 66) }{((\alpha-3)*(\alpha - 4)) } $$\\
-		
-      \end{enumerate}
-
- %%---------------------------------------------------------------------------------------------------
-\section{A random variable X is said to have a Possion distribution if its pdf is: \\
-     $$f(x|shape=\alpha,scale=\theta)=\frac{1}{\Gamma(\alpha)\theta^\alpha}x^{\alpha-1}e^{-x/\theta},x \in [0,\infty), \alpha >0,\theta>0$$}
-%===================================================================================================
-\begin{enumerate}      
-	\item[(a)] Verify $f(X=k)$ is a valid pdf.\\
-		证明：两个性质不难证明性质a, 即$f(X=k) \ge 0$。\\
-      		不难推导，$$f(X=k)=\frac{\lambda^k}{k!}e^{-\lambda},k=0,1,2,... $$
-		$$= \sum_{x=0}^{\infty}P(X=x|\lambda)=e^{-\lambda}\sum_{x=0}^{\infty}\frac{\lambda^x}{x!}=e^{-\lambda} e^\lambda=1$$ 
-		即可证$f(X=k)$ 是概率密度函数。
-	\item[(b)] Find the moment generating function M(t) of a Gamma random variable;\\
-		解：矩母函数为：
-		$$M_{X}(t)= \sum_{x=0}^{\infty}e^{tx}\frac{e^{-\lambda}\lambda^x}{x!}$$
-		$$=e^{-\lambda}\sum_{x=1}^{\infty}\frac{(e^t\lambda)^x}{x!}=e^{-\lambda} e^{\lambda e^t}$$
-		$$=e^{\lambda(e^t-1)}$$
-		
-	\item[(c)]	Find the mean, the variance, the skewness and the kurtosis of a Poisson random variable;
-		 解: 先求期望，$$EX=\frac{d}{dx}M_{X}(t)\vert_{t=0}=e^{\lambda(e^t-1)}\lambda e^t \vert_{t=0}=\lambda$$
-		 再求平方的期望，$$EX^2=\frac{d^{(2)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=\lambda^2+\lambda$$,
-		因此方差$VarX=EX^2-(EX)^2 =\lambda^2+\lambda-\lambda^2=\lambda$\\
-		The skewness of a random variable X is its third central moment ,因此$$EX^3=\frac{d^{(3)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=\lambda^{-1/2}$$\\
-		The Kurtosis of a random variable X is its fourth central moment,因此$$EX^4=\frac{d^{(4)}}{dx}M_{X}^{(2)}(t)\vert_{t=0}=\lambda^{-1}$$\\
-  \end{enumerate}
-
-\section{Show that\\
-     $$\int_{x}^{\infty}\frac{1}{\Gamma(\alpha)}z^{\alpha-1}e^{-z}dz=\sum_{y=0}^{\alpha-1}\frac{x^ye^{-x}}{y!},\alpha=1,2,3,...$$ (Hint:Use integration by parts.) Express this formula as a probabilistic relationship between Possion and gamma random variables.}
-    
-%===================================================================================================
-	解：因为$\alpha=1，2，3,...$, 即$\alpha $是正整数，故有$\Gamma(\alpha)=(a-1)!$\\
-	因此有$$\int_{x}^{\infty}\frac{1}{\Gamma(\alpha)}z^{\alpha-1}e^{-z}dz$$
-	$$=\frac{1}{(\alpha-1)!}\int_{x}^{\infty}z^{\alpha-1}e^{-z}dz$$
-	令$u=z^{\alpha-1}$, $dv=e^{-z}$进行分部积分，
-	有上式$$=\frac{1}{(\alpha-1)!} \left( -z^{\alpha-1}e^{-z} \vert_{x}^{\infty}+\int_{x}^{\infty}(\alpha-1)z^{\alpha-2}e^{-z}dz \right)$$
-	$$=\frac{z^{\alpha-1}e^{-z} }{(\alpha-1)!} +(\alpha-1)\int_{x}^{\infty}z^{\alpha-2}e^{-z}dz$$
-	重复上述分部积分过程，可得：
-	$$=\frac{z^{\alpha-1}e^{-z} }{(\alpha-1)!} +\frac{z^{\alpha-2}e^{-z} }{(\alpha-2)!} +(\alpha-2)\int_{x}^{\infty}z^{\alpha-3}e^{-z}dz$$
-	$$=\frac{z^{\alpha-1}e^{-z} }{(\alpha-1)!} +\frac{z^{\alpha-2}e^{-z} }{(\alpha-2)!} +...+ \frac{z e^{-z}}{1!}+(1)\int_{x}^{\infty}z^{0}e^{-z}dz$$
-	令$y=\alpha-1$,代入到上式可得
-	$$=\sum_{y=0}{\alpha-1}\frac{z^y e^{-z}}{y!}$$
-	因此，可得题中左右两式相等，而等式左边为$P (X ≥ x) $，等式左边为$P (Y ≤ y) $，即可得出结论，如果$X \backsim \Gamma(\alpha,1)$且$Y\backsim Poisson(x)$,那么它们就有一种关系：
-	$$P (X \ge x) = P (Y \le \alpha - 1)$$
-		
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
